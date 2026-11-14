@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#c4c4c4">
+  <title>Exosuitizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <h1>Exosuitizer</h1>
+      <p>Добавьте синюю полосу к изображению</p>
+    </header>
+
+    <section class="segment-bar" aria-label="Сторона полосы">
+      <label class="segment-option">
+        <input type="radio" name="side" value="bottom" checked>
+        <span>Снизу</span>
+      </label>
+      <label class="segment-option">
+        <input type="radio" name="side" value="right">
+        <span>Справа</span>
+      </label>
+      <label class="segment-option">
+        <input type="radio" name="side" value="left">
+        <span>Слева</span>
+      </label>
+      <label class="segment-option">
+        <input type="radio" name="side" value="top">
+        <span>Сверху</span>
+      </label>
+    </section>
+
+    <section class="workspace" aria-label="Редактор изображения">
+      <div class="editor-column">
+        <div id="dropzone" class="preview-card dropzone" tabindex="0" role="button" aria-label="Загрузить изображение">
+          <div id="input-placeholder" class="placeholder">Перетащите файл сюда<br>или выберите его кнопкой ниже</div>
+          <img id="source-preview" alt="Исходное изображение" hidden>
+          <canvas id="source-canvas" hidden></canvas>
+        </div>
+        <button id="choose-button" class="button" type="button">Загрузить фото...</button>
+        <input id="file-input" type="file" accept=".jpg,.jpeg,.png,.webp,.bmp,image/jpeg,image/png,image/webp,image/bmp" hidden>
+      </div>
+
+      <div class="action-column">
+        <button id="process-button" class="button accent" type="button" disabled>ЭКСАУТИЗИРОВАТЬ</button>
+      </div>
+
+      <div class="editor-column">
+        <div class="preview-card result-card">
+          <div id="result-placeholder" class="placeholder">Результат</div>
+          <img id="result-preview" alt="Обработанное изображение" hidden>
+          <canvas id="result-canvas" hidden></canvas>
+        </div>
+        <div class="download-row">
+          <select id="format-select" aria-label="Формат результата">
+            <option value="png">PNG</option>
+            <option value="jpeg">JPEG</option>
+            <option value="webp">WebP</option>
+            <option value="bmp">BMP</option>
+          </select>
+          <button id="download-button" class="button" type="button" disabled>Скачать результат</button>
+        </div>
+      </div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div class="author-callout" aria-hidden="true">
+      <svg class="author-arrow" viewBox="0 0 760 180" preserveAspectRatio="none">
+        <path d="M 30 90 H 660 M 660 90 L 570 25 M 660 90 L 570 155" />
+      </svg>
+    </div>
+    <footer><a href="https://t.me/mej1ch">by mej1ch</a></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
